@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Python Exam Prep - Ujjwal Pandey</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;600&family=Orbitron:wght@400;700&display=swap');
+
+        body {
+            font-family: 'Fira Code', monospace;
+            background-color: #0f172a;
+            color: #e2e8f0;
+            overflow-x: hidden;
+        }
+
+        .cyber-title {
+            font-family: 'Orbitron', sans-serif;
+            text-shadow: 0 0 10px #22d3ee, 0 0 20px #22d3ee;
+        }
+
+        .code-block {
+            background-color: #1e1e1e;
+            border-left: 4px solid #22d3ee;
+        }
+
+        .terminal-output {
+            background-color: #000;
+            border: 1px solid #334155;
+            box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.5);
+        }
+
+        .answer-panel {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease-out, opacity 0.5s ease;
+            opacity: 0;
+        }
+
+        .answer-panel.open {
+            max-height: 1000px; /* Large enough to fit content */
+            opacity: 1;
+        }
+
+        .hover-glow:hover {
+            box-shadow: 0 0 15px rgba(34, 211, 238, 0.3);
+            transform: translateY(-2px);
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0f172a;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #334155;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #22d3ee;
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col relative">
+
+    <!-- Background Pattern -->
+    <div class="fixed inset-0 z-0 opacity-10 pointer-events-none" style="background-image: radial-gradient(#22d3ee 1px, transparent 1px); background-size: 30px 30px;"></div>
+
+    <!-- Header -->
+    <header class="relative z-10 py-10 text-center px-4">
+        <div class="inline-block p-2 border border-cyan-500 rounded-lg bg-slate-900/80 backdrop-blur-sm mb-4">
+            <span class="text-cyan-400 text-sm tracking-widest uppercase">CSE Exam Special</span>
+        </div>
+        <h1 class="text-4xl md:text-6xl font-bold text-white mb-2 cyber-title">Python Most Important Questions</h1>
+        <p class="text-cyan-300 text-lg md:text-xl mt-4 flex flex-col sm:flex-row items-center justify-center gap-2">
+            <span class="text-slate-400 text-sm sm:text-lg">Created by</span> 
+            <span class="font-bold text-white bg-gradient-to-r from-cyan-600 to-blue-600 px-4 py-1 rounded-full shadow-lg shadow-cyan-500/20 tracking-wide border border-cyan-400/30">UJJWAL PANDEY</span>
+        </p>
+    </header>
+
+    <!-- Main Content -->
+    <main class="flex-grow container mx-auto px-4 pb-10 relative z-10 max-w-4xl">
+        <div id="questions-container" class="space-y-4">
+            <!-- Questions will be injected here via JS -->
+        </div>
+
+        <!-- Exam Wishes & Support Section -->
+        <div class="mt-16 mb-8 flex flex-col md:flex-row items-center justify-between gap-8 bg-slate-800/50 p-6 rounded-2xl border border-slate-700 backdrop-blur-sm shadow-2xl">
+            
+            <!-- Greeting Message -->
+            <div class="text-center md:text-left flex-1">
+                <h2 class="text-3xl md:text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-cyan-500 cyber-title animate-bounce" style="animation-duration: 2s;">
+                    ALL THE BEST FOR PYTHON EXAM!
+                </h2>
+                <p class="text-slate-400 mt-2 font-light">Believe in yourself and code with confidence.</p>
+            </div>
+
+            <!-- QR Code Section -->
+            <div class="bg-white p-4 rounded-xl shadow-2xl shadow-cyan-500/20 text-center flex-shrink-0 w-full max-w-[220px] transform hover:scale-105 transition-transform duration-300 border-4 border-slate-800 relative group">
+                <div class="absolute -top-3 -right-3 bg-yellow-500 text-slate-900 font-bold text-xs px-2 py-1 rounded-full shadow-md animate-bounce">
+                    SCAN ME
+                </div>
+                <!-- Generates a real QR code for the UPI ID -->
+                <img src="pay.png" alt="Scan to Pay" class="w-full h-auto rounded mb-2 border border-slate-200">
+                <div class="border-t border-slate-200 pt-3 mt-1">
+                    <p class="text-slate-900 font-bold text-sm font-sans uppercase tracking-tight">Support the Developer</p>
+                    <div class="flex items-center justify-center gap-1 mt-1 bg-slate-100 rounded px-2 py-1 border border-slate-200">
+                        
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-slate-900 border-t border-slate-800 py-6 text-center relative z-10">
+        <p class="text-slate-400 text-sm">
+            &copy; 2025 All Rights Reserved | 
+            <span class="text-cyan-400 font-bold">UJJWAL PANDEY</span> | 
+            <span class="text-slate-500">ID: 24105127041</span>
+        </p>
+        <div class="mt-2 text-xs text-slate-600">
+            Designed for CSE Final Exams
+        </div>
+    </footer>
+
+    <!-- JavaScript Data & Logic -->
+    <script>
+        // Data Structure for Questions
+        const questionsData = [
+            {
+                id: 1,
+                title: "1. Read two numbers and print sum, difference, product, division",
+                code: `num1 = int(input("Enter first number: "))
+num2 = int(input("Enter second number: "))
+
+print("Sum =", num1 + num2)
+print("Difference =", num1 - num2)
+print("Product =", num1 * num2)
+print("Division =", num1 / num2)`,
+                output: `Enter first number: 10
+Enter second number: 5
+Sum = 15
+Difference = 5
+Product = 50
+Division = 2.0`
+            },
+            {
+                id: 2,
+                title: "2. Check whether a number is EVEN or ODD",
+                code: `number = int(input("Enter a number: "))
+
+if number % 2 == 0:
+    print("Even number")
+else:
+    print("Odd number")`,
+                output: `Enter a number: 7
+Odd number`
+            },
+            {
+                id: 3,
+                title: "3. Find the LARGEST of three numbers",
+                code: `a = int(input("Enter first number: "))
+b = int(input("Enter second number: "))
+c = int(input("Enter third number: "))
+
+if a > b and a > c:
+    print("Largest =", a)
+elif b > c:
+    print("Largest =", b)
+else:
+    print("Largest =", c)`,
+                output: `Enter first number: 12
+Enter second number: 45
+Enter third number: 30
+Largest = 45`
+            },
+            {
+                id: 4,
+                title: "4. Calculate FACTORIAL using a loop",
+                code: `n = int(input("Enter a number: "))
+fact = 1
+
+for i in range(1, n + 1):
+    fact = fact * i
+
+print("Factorial =", fact)`,
+                output: `Enter a number: 5
+Factorial = 120`
+            },
+            {
+                id: 5,
+                title: "5. Count the number of vowels in a STRING",
+                code: `text = input("Enter any string: ")
+vowels = "aeiouAEIOU"
+count = 0
+
+for ch in text:
+    if ch in vowels:
+        count += 1
+
+print("Number of vowels =", count)`,
+                output: `Enter any string: Ujjwal Pandey
+Number of vowels = 4`
+            },
+            {
+                id: 6,
+                title: "6. REVERSE a string using slicing",
+                code: `message = input("Enter a string: ")
+reverse_message = message[::-1]
+print("Reversed string =", reverse_message)`,
+                output: `Enter a string: Python
+Reversed string = nohtyP`
+            },
+            {
+                id: 7,
+                title: "7. Find the LARGEST element in a LIST",
+                code: `numbers = [10, 25, 5, 90, 40]
+print("Largest number =", max(numbers))`,
+                output: `Largest number = 90`
+            },
+            {
+                id: 8,
+                title: "8. COUNT how many times an element appears in a LIST",
+                code: `numbers = [2, 3, 2, 5, 2, 7, 3]
+item = 2
+
+print("Count of", item, "=", numbers.count(item))`,
+                output: `Count of 2 = 3`
+            },
+            {
+                id: 9,
+                title: "9. Store student names & marks in DICTIONARY",
+                code: `students = {
+    "Ram": 85,
+    "Shyam": 92,
+    "Rita": 78
+}
+
+for name, marks in students.items():
+    print(name, "=", marks)`,
+                output: `Ram = 85
+Shyam = 92
+Rita = 78`
+            },
+            {
+                id: 10,
+                title: "10. Read a TEXT FILE and count words",
+                code: `file = open("data.txt", "r")
+content = file.read()
+file.close()
+
+words = content.split()
+print("Total words =", len(words))`,
+                output: `Total words = 6`
+            }
+        ];
+
+        // Render Questions
+        const container = document.getElementById('questions-container');
+
+        questionsData.forEach(q => {
+            const card = document.createElement('div');
+            card.className = "bg-slate-800 rounded-xl border border-slate-700 shadow-lg overflow-hidden transition-all hover-glow";
+            
+            card.innerHTML = `
+                <button onclick="toggleAnswer(${q.id})" class="w-full text-left p-5 flex justify-between items-center bg-slate-800 hover:bg-slate-750 transition-colors focus:outline-none">
+                    <div class="flex items-center gap-3">
+                        <span class="bg-cyan-500/10 text-cyan-400 border border-cyan-500/20 px-3 py-1 rounded text-xs font-bold">Q${q.id}</span>
+                        <h3 class="text-lg font-semibold text-white">${q.title.substring(3)}</h3>
+                    </div>
+                    <i id="icon-${q.id}" class="fas fa-chevron-down text-slate-400 transition-transform duration-300"></i>
+                </button>
+                
+                <div id="answer-${q.id}" class="answer-panel bg-slate-900/50">
+                    <div class="p-5 border-t border-slate-700">
+                        <div class="flex justify-between items-end mb-2">
+                            <span class="text-xs text-slate-400 uppercase tracking-wider">Python Source Code</span>
+                            <button onclick="runCode(${q.id})" class="flex items-center gap-2 bg-green-600 hover:bg-green-500 text-white text-xs px-3 py-1.5 rounded transition-colors shadow-md">
+                                <i class="fas fa-play"></i> Run Code
+                            </button>
+                        </div>
+                        
+                        <div class="code-block p-4 rounded-lg overflow-x-auto text-sm text-gray-300 font-mono mb-4 relative group">
+                             <pre>${escapeHtml(q.code)}</pre>
+                        </div>
+
+                        <div id="output-box-${q.id}" class="hidden">
+                            <span class="text-xs text-slate-400 uppercase tracking-wider">Terminal Output</span>
+                            <div class="terminal-output mt-1 p-3 rounded font-mono text-green-400 text-sm whitespace-pre-line">
+                                <span class="animate-pulse">_</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+            container.appendChild(card);
+        });
+
+        // Toggle Accordion Function
+        function toggleAnswer(id) {
+            const panel = document.getElementById(`answer-${id}`);
+            const icon = document.getElementById(`icon-${id}`);
+            const isOpen = panel.classList.contains('open');
+
+            // Close all others (Optional - remove if you want multiple open)
+            document.querySelectorAll('.answer-panel').forEach(p => p.classList.remove('open'));
+            document.querySelectorAll('.fa-chevron-down').forEach(i => i.style.transform = 'rotate(0deg)');
+
+            if (!isOpen) {
+                panel.classList.add('open');
+                icon.style.transform = 'rotate(180deg)';
+            }
+        }
+
+        // Simulate Run Code Function
+        function runCode(id) {
+            const outputBox = document.getElementById(`output-box-${id}`);
+            const outputContent = outputBox.querySelector('.terminal-output');
+            const actualOutput = questionsData.find(q => q.id === id).output;
+
+            outputBox.classList.remove('hidden');
+            outputContent.innerHTML = '<span class="text-yellow-400">Compiling...</span>';
+
+            setTimeout(() => {
+                outputContent.innerHTML = `<span class="text-slate-500">user@ujjwal-pc:~$ python3 main.py</span><br/>${actualOutput}<br/><span class="animate-pulse text-green-500">_</span>`;
+            }, 800);
+        }
+
+        // Utility to escape HTML for code display
+        function escapeHtml(text) {
+            return text
+                .replace(/&/g, "&amp;")
+                .replace(/</g, "&lt;")
+                .replace(/>/g, "&gt;")
+                .replace(/"/g, "&quot;")
+                .replace(/'/g, "&#039;");
+        }
+    </script>
+</body>
+</html>
